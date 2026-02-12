@@ -1,136 +1,97 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة الاختبارات - أ. عبدالعزيز الفيفي</title>
+    <title>منصة النماذج التعليمية</title>
     <style>
-        :root {
-            --primary: #4a90e2;
-            --bg: #f8faff;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px 30px;
-            border-radius: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 500px;
+        /* تنسيقات بسيطة لضمان مظهر العداد */
+        .user-badge {
             text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.3);
+            margin: 20px 0;
+            font-family: 'Cairo', sans-serif;
         }
-        .school-name { color: #5a67d8; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; }
-        h1 { color: #2d3748; font-size: 28px; margin: 10px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.05); }
-        .teacher-name { color: #4a5568; font-size: 18px; margin-bottom: 25px; border-bottom: 2px dashed #cbd5e0; padding-bottom: 15px; }
-        
-        /* مربع البحث */
-        #searchBox {
-            width: 90%;
-            padding: 15px;
-            margin-bottom: 25px;
-            border: 2px solid #e2e8f0;
-            border-radius: 50px;
-            font-size: 16px;
-            text-align: center;
-            outline: none;
-            transition: all 0.3s;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
-        }
-        #searchBox:focus { border-color: #667eea; box-shadow: 0 0 10px rgba(102,126,234,0.2); }
-
-        /* الأزرار */
-        .model-list { display: flex; flex-direction: column; gap: 15px; }
-        .btn {
-            display: flex;
+        .badge-container {
+            display: inline-flex;
             align-items: center;
-            padding: 18px 25px;
-            text-decoration: none;
-            border-radius: 20px;
-            font-weight: 600;
-            color: #4a5568;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: white;
-            border: 1px solid #edf2f7;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            background: #ffffff;
+            padding: 8px 15px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
         }
-        .btn:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        .model-count {
+            background: #2563eb;
+            color: white;
+            padding: 2px 12px;
+            border-radius: 15px;
+            margin-right: 10px;
+            font-weight: bold;
+            font-size: 0.9rem;
         }
-        .icon { font-size: 24px; margin-left: 15px; background: #f7fafc; padding: 10px; border-radius: 15px; }
-
-        /* ألوان باستيل مبهرة */
-        .c1 { border-right: 8px solid #feb2b2; } .c1:hover { background: #fff5f5; }
-        .c2 { border-right: 8px solid #90cdf4; } .c2:hover { background: #ebf8ff; }
-        .c3 { border-right: 8px solid #9ae6b4; } .c3:hover { background: #f0fff4; }
-        .c4 { border-right: 8px solid #faf089; } .c4:hover { background: #fffff0; }
-        .c5 { border-right: 8px solid #d6bcfa; } .c5:hover { background: #faf5ff; }
-        .c6 { border-right: 8px solid #81e6d9; } .c6:hover { background: #e6fffa; }
-
-        footer { margin-top: 30px; font-size: 13px; color: #a0aec0; letter-spacing: 1px; }
-        .no-results { display: none; padding: 20px; color: #e53e3e; font-weight: bold; }
+        .btn { display: flex; align-items: center; margin: 10px; text-decoration: none; padding: 10px; border-radius: 8px; color: #333; background: #f9f9f9; border: 1px solid #ddd; }
+        .no-results { display: none; color: red; text-align: center; margin-top: 20px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="school-name">🏰 ثانوية الأمير عبدالحميد</div>
-    <h1>✨ بوابة الاختبارات الرقمية ✨</h1>
-    <div class="teacher-name">إعداد الأستاذ: <b>عبدالعزيز الفيفي</b> 👨‍🏫</div>
+    <!-- القسم الجديد: اسمك وعداد النماذج -->
+    <div class="user-badge">
+        <div class="badge-container">
+            <span>👤 أهلاً بك في منصتي</span>
+            <span id="modelCounter" class="model-count">جاري الحساب..</span>
+        </div>
+    </div>
 
-    <input type="text" id="searchBox" placeholder="🔍 ابحث عن مادتك أو رقم النموذج..." onkeyup="searchModels()">
+    <!-- صندوق البحث -->
+    <div style="text-align: center;">
+        <input type="text" id="searchBox" onkeyup="searchModels()" placeholder="ابحث عن نموذج..." style="padding: 10px; width: 80%; max-width: 400px; border-radius: 5px; border: 1px solid #ccc;">
+    </div>
 
-    <div class="model-list" id="modelList">
-        <!-- انسخ أي سطر وزد الأرقام للأبد -->
-        <a href="https://aztlaztl1512-bit.github.io/school11/" class="btn c1">
-            <span class="icon">📖</span> <span>نموذج 1</span>
-        </a>
-
-        <a href="https://aztlaztl1512-bit.github.io/school9/" class="btn c2">
-            <span class="icon">🧪</span> <span>نموذج 2</span>
-        </a>
-<a href="https://aztlaztl1512-bit.github.io/school12/" class="btn c3">
+    <div id="modelList" class="list">
+        <!-- النماذج الخاصة بك -->
+        <a href="https://aztlaztl1512-bit.github.io" class="btn c3">
             <span class="icon">📐</span> <span>نموذج 3</span>
         </a>
 
-        <a href="https://fanciful-cactus-895f5b.netlify.app/
-" class="btn c4">
+        <a href="https://fanciful-cactus-895f5b.netlify.app" class="btn c4">
             <span class="icon">💻</span> <span>نموذج 4</span>
         </a>
 
-        <a href="https://dynamic-puppy-921890.netlify.app/" class="btn c5">
+        <a href="https://dynamic-puppy-921890.netlify.app" class="btn c5">
             <span class="icon">📖</span> <span>نموذج 5</span>
         </a>
 
-<a href="https://tangerine-dodol-ba483f.netlify.app/" class="btn c5">
+        <a href="https://tangerine-dodol-ba483f.netlify.app" class="btn c5">
             <span class="icon">🧪</span> <span>نموذج 6</span>
         </a>
 
-<a href="https://dashing-kangaroo-2d6359.netlify.app/" class="btn c5">
+        <a href="https://dashing-kangaroo-2d6359.netlify.app" class="btn c5">
             <span class="icon">🧪</span> <span>نموذج 7</span>
         </a>
 
-        <a href="https://forms.cloud.microsoft/r/SZptwEewNa?origin=lprLink" class="btn c6">
+        <a href="https://forms.cloud.microsoft" class="btn c6">
             <span class="icon">🌎</span> <span>نموذج 8</span>
         </a>
     </div>
 
     <div id="noResults" class="no-results">❌ عذراً.. لا يوجد نموذج بهذا الاسم</div>
 
-    <footer>صنع بكل حب لدعم مسيرة أبنائنا الطلاب 🚀</footer>
+    <footer style="text-align: center; margin-top: 30px; padding: 20px; color: #777;">
+        صنع بكل حب لدعم مسيرة أبنائنا الطلاب 🚀
+    </footer>
 </div>
 
 <script>
+    // وظيفة حساب عدد النماذج تلقائياً
+    function updateCounter() {
+        let list = document.getElementById('modelList');
+        let count = list.getElementsByTagName('a').length;
+        document.getElementById('modelCounter').innerText = "النماذج المتاحة: " + count;
+    }
+
+    // وظيفة البحث
     function searchModels() {
         let input = document.getElementById('searchBox').value.toLowerCase();
         let list = document.getElementById('modelList');
@@ -149,6 +110,8 @@
         }
         noResults.style.display = found ? "none" : "block";
     }
+// تشغيل العداد عند فتح الصفحة
+    window.onload = updateCounter;
 </script>
 
 </body>

@@ -20,92 +20,80 @@
         }
         .container {
             background: rgba(255, 255, 255, 0.95);
-            padding: 40px 30px;
+            padding: 30px 20px;
             border-radius: 30px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             width: 100%;
-            max-width: 500px;
+            max-width: 600px; /* جعلنا الحاوية أعرض قليلاً لتناسب الشبكة */
             text-align: center;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.3);
         }
         
-        /* لون اسم المدرسة - أحمر */
-        .school-name { 
-            color: #e53e3e !important; 
-            font-weight: bold; 
-            font-size: 1.1rem; 
-            margin-bottom: 5px; 
-        }
-
-        h1 { color: #2d3748; font-size: 28px; margin: 10px 0 5px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.05); }
-        
-        /* جعل سطر القسم اللفظي باللون الأحمر مثل المدرسة */
-        .section-name {
-            color: #e53e3e;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .teacher-name { color: #4a5568; font-size: 18px; margin-bottom: 25px; border-bottom: 2px dashed #cbd5e0; padding-bottom: 15px; }
+        .school-name { color: #e53e3e !important; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; }
+        h1 { color: #2d3748; font-size: 24px; margin: 10px 0 5px 0; }
+        .section-name { color: #e53e3e; font-size: 1.1rem; font-weight: 600; margin-bottom: 5px; }
+        .teacher-name { color: #4a5568; font-size: 17px; margin-bottom: 20px; border-bottom: 2px dashed #cbd5e0; padding-bottom: 15px; }
         
         .model-counter {
             background: #ebf4ff;
             display: inline-block;
-            padding: 8px 20px;
+            padding: 6px 15px;
             border-radius: 50px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: bold;
             color: #2b6cb0;
             margin-bottom: 20px;
-            border: 1px solid #bee3f8;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
         #searchBox {
-            width: 90%;
-            padding: 15px;
+            width: 80%;
+            padding: 12px;
             margin-bottom: 25px;
-            border: 2px solid #e2e8f0;
+            border: 2px solid #667eea;
             border-radius: 50px;
             font-size: 16px;
             text-align: center;
             outline: none;
-            transition: all 0.3s;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
         }
-        #searchBox:focus { border-color: #667eea; box-shadow: 0 0 10px rgba(102,126,234,0.2); }
 
-        .model-list { display: flex; flex-direction: column; gap: 15px; }
+        /* تحويل القائمة إلى شبكة (Grid) لاختصار المساحة */
+        .model-list { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); 
+            gap: 12px; 
+            max-height: 400px; /* طول محدد للقائمة */
+            overflow-y: auto; /* إضافة سكرول داخلي إذا زادت النماذج جداً */
+            padding: 10px;
+        }
+
         .btn {
             display: flex;
+            flex-direction: column; /* الأيقونة فوق النص */
             align-items: center;
-            padding: 18px 25px;
+            justify-content: center;
+            padding: 15px 10px;
             text-decoration: none;
-            border-radius: 20px;
+            border-radius: 15px;
             font-weight: 600;
             color: #4a5568;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             background: white;
             border: 1px solid #edf2f7;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: 0.3s;
+            font-size: 0.9rem;
         }
-        .btn:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        .icon { font-size: 24px; margin-left: 15px; background: #f7fafc; padding: 10px; border-radius: 15px; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); background: #f0f7ff; }
+        .icon { font-size: 20px; margin-bottom: 8px; }
 
-        .c1 { border-right: 8px solid #feb2b2; } .c1:hover { background: #fff5f5; }
-        .c2 { border-right: 8px solid #90cdf4; } .c2:hover { background: #ebf8ff; }
-        .c3 { border-right: 8px solid #9ae6b4; } .c3:hover { background: #f0fff4; }
-        .c4 { border-right: 8px solid #faf089; } .c4:hover { background: #fffff0; }
-        .c5 { border-right: 8px solid #d6bcfa; } .c5:hover { background: #faf5ff; }
-        .c6 { border-right: 8px solid #81e6d9; } .c6:hover { background: #e6fffa; }
+        /* ألوان الحواف */
+        .c-box { border-bottom: 5px solid #667eea; }
 
-        footer { margin-top: 30px; font-size: 13px; color: #a0aec0; letter-spacing: 1px; }
+        footer { margin-top: 25px; font-size: 12px; color: #a0aec0; }
         .no-results { display: none; padding: 20px; color: #e53e3e; font-weight: bold; }
+        
+        /* تخصيص شكل السكرول الداخلي */
+        .model-list::-webkit-scrollbar { width: 6px; }
+        .model-list::-webkit-scrollbar-thumb { background: #cbd5e0; border-radius: 10px; }
     </style>
 </head>
 <body>
@@ -117,49 +105,47 @@
     <div class="teacher-name">إعداد الأستاذ: <b style="color: #2b6cb0;">عبدالعزيز الفيفي</b> 👨‍🏫</div>
 
     <div class="model-counter">
-        📊 عدد النماذج المتاحة الآن: <span id="modelCount">0</span>
+        📊 عدد النماذج: <span id="modelCount">0</span>
     </div>
 
-    <input type="text" id="searchBox" placeholder="🔍 ابحث عن مادتك أو رقم النموذج..." onkeyup="searchModels()">
+    <input type="text" id="searchBox" placeholder="🔍 اكتب رقم النموذج (مثلاً: 5)" onkeyup="searchModels()">
 
     <div class="model-list" id="modelList">
-        <a href="https://aztlaztl1512-bit.github.io/school11/" class="btn c1">
+        <a href="https://aztlaztl1512-bit.github.io/school11/" class="btn c-box">
             <span class="icon">📖</span> <span>نموذج 1</span>
         </a>
-        <a href="https://aztlaztl1512-bit.github.io/school9/" class="btn c2">
+        <a href="https://aztlaztl1512-bit.github.io/school9/" class="btn c-box">
             <span class="icon">🧪</span> <span>نموذج 2</span>
         </a>
-        <a href="https://aztlaztl1512-bit.github.io/school12/" class="btn c3">
+        <a href="https://aztlaztl1512-bit.github.io/school12/" class="btn c-box">
             <span class="icon">📐</span> <span>نموذج 3</span>
         </a>
-        <a href="https://fanciful-cactus-895f5b.netlify.app/" class="btn c4">
+        <a href="https://fanciful-cactus-895f5b.netlify.app/" class="btn c-box">
             <span class="icon">💻</span> <span>نموذج 4</span>
         </a>
-        <a href="https://dynamic-puppy-921890.netlify.app/" class="btn c5">
+        <a href="https://dynamic-puppy-921890.netlify.app/" class="btn c-box">
             <span class="icon">📖</span> <span>نموذج 5</span>
         </a>
-        <a href="https://tangerine-dodol-ba483f.netlify.app/" class="btn c5">
+        <a href="https://tangerine-dodol-ba483f.netlify.app/" class="btn c-box">
             <span class="icon">🧪</span> <span>نموذج 6</span>
         </a>
-        <a href="https://dashing-kangaroo-2d6359.netlify.app/" class="btn c5">
+        <a href="https://dashing-kangaroo-2d6359.netlify.app/" class="btn c-box">
             <span class="icon">🧪</span> <span>نموذج 7</span>
         </a>
-        <a href="https://forms.cloud.microsoft/r/SZptwEewNa?origin=lprLink" class="btn c6">
+        <a href="https://forms.cloud.microsoft/r/SZptwEewNa?origin=lprLink" class="btn c-box">
             <span class="icon">🌎</span> <span>نموذج 8</span>
         </a>
     </div>
 
-    <div id="noResults" class="no-results">❌ عذراً.. لا يوجد نموذج بهذا الاسم</div>
+    <div id="noResults" class="no-results">❌ لا يوجد نموذج بهذا الرقم</div>
 
-    <footer>صنع بكل حب لدعم مسيرة أبنائنا الطلاب 🚀</footer>
+    <footer>صنع بكل حب لدعم أبنائنا الطلاب 🚀</footer>
 </div>
 
 <script>
     function updateCounter() {
-        const count = document.getElementById('modelList').getElementsByTagName('a').length;
-        document.getElementById('modelCount').innerText = count;
+        document.getElementById('modelCount').innerText = document.getElementById('modelList').getElementsByTagName('a').length;
     }
-
     window.onload = updateCounter;
 
     function searchModels() {
@@ -171,6 +157,7 @@
 
         for (let i = 0; i < items.length; i++) {
             let text = items[i].textContent || items[i].innerText;
+            // البحث برقم النموذج فقط أو النص
             if (text.toLowerCase().indexOf(input) > -1) {
                 items[i].style.display = "flex";
                 found = true;

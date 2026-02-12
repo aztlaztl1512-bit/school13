@@ -29,11 +29,18 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.3);
         }
-        .school-name { color: #5a67d8; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; }
+        
+        /* لون المدرسة باللون الأحمر */
+        .school-name { 
+            color: #e53e3e; 
+            font-weight: bold; 
+            font-size: 1.1rem; 
+            margin-bottom: 5px; 
+        }
+
         h1 { color: #2d3748; font-size: 28px; margin: 10px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.05); }
         .teacher-name { color: #4a5568; font-size: 18px; margin-bottom: 25px; border-bottom: 2px dashed #cbd5e0; padding-bottom: 15px; }
         
-        /* تصميم عداد النماذج بلمسة عصرية */
         .model-counter {
             background: #ebf4ff;
             display: inline-block;
@@ -138,7 +145,6 @@
 </div>
 
 <script>
-    // تحديث العداد تلقائياً بكل ذكاء
     function updateCounter() {
         const count = document.getElementById('modelList').getElementsByTagName('a').length;
         document.getElementById('modelCount').innerText = count;

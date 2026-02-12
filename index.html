@@ -33,7 +33,19 @@
         h1 { color: #2d3748; font-size: 28px; margin: 10px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.05); }
         .teacher-name { color: #4a5568; font-size: 18px; margin-bottom: 25px; border-bottom: 2px dashed #cbd5e0; padding-bottom: 15px; }
         
-        /* مربع البحث */
+        /* تصميم أيقونة عدد النماذج */
+        .model-counter {
+            background: #edf2f7;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #4a5568;
+            margin-bottom: 15px;
+            border: 1px solid #e2e8f0;
+        }
+
         #searchBox {
             width: 90%;
             padding: 15px;
@@ -48,7 +60,6 @@
         }
         #searchBox:focus { border-color: #667eea; box-shadow: 0 0 10px rgba(102,126,234,0.2); }
 
-        /* الأزرار */
         .model-list { display: flex; flex-direction: column; gap: 15px; }
         .btn {
             display: flex;
@@ -69,7 +80,6 @@
         }
         .icon { font-size: 24px; margin-left: 15px; background: #f7fafc; padding: 10px; border-radius: 15px; }
 
-        /* ألوان باستيل مبهرة */
         .c1 { border-right: 8px solid #feb2b2; } .c1:hover { background: #fff5f5; }
         .c2 { border-right: 8px solid #90cdf4; } .c2:hover { background: #ebf8ff; }
         .c3 { border-right: 8px solid #9ae6b4; } .c3:hover { background: #f0fff4; }
@@ -84,42 +94,38 @@
 <body>
 
 <div class="container">
-    <div class="school-name">🏰 ثانوية الأمير عبدالحميد</div>
+    <div class="school-name">🏰 ثانوية الأمير عبدالمجيد</div>
     <h1>✨ بوابة الاختبارات الرقمية ✨</h1>
     <div class="teacher-name">إعداد الأستاذ: <b>عبدالعزيز الفيفي</b> 👨‍🏫</div>
+
+    <div class="model-counter">
+        📊 عدد النماذج المتاحة الآن: <span id="modelCount">0</span>
+    </div>
 
     <input type="text" id="searchBox" placeholder="🔍 ابحث عن مادتك أو رقم النموذج..." onkeyup="searchModels()">
 
     <div class="model-list" id="modelList">
-        <!-- انسخ أي سطر وزد الأرقام للأبد -->
         <a href="https://aztlaztl1512-bit.github.io/school11/" class="btn c1">
             <span class="icon">📖</span> <span>نموذج 1</span>
         </a>
-
         <a href="https://aztlaztl1512-bit.github.io/school9/" class="btn c2">
             <span class="icon">🧪</span> <span>نموذج 2</span>
         </a>
-<a href="https://aztlaztl1512-bit.github.io/school12/" class="btn c3">
+        <a href="https://aztlaztl1512-bit.github.io/school12/" class="btn c3">
             <span class="icon">📐</span> <span>نموذج 3</span>
         </a>
-
-        <a href="https://fanciful-cactus-895f5b.netlify.app/
-" class="btn c4">
+        <a href="https://fanciful-cactus-895f5b.netlify.app/" class="btn c4">
             <span class="icon">💻</span> <span>نموذج 4</span>
         </a>
-
         <a href="https://dynamic-puppy-921890.netlify.app/" class="btn c5">
             <span class="icon">📖</span> <span>نموذج 5</span>
         </a>
-
-<a href="https://tangerine-dodol-ba483f.netlify.app/" class="btn c5">
+        <a href="https://tangerine-dodol-ba483f.netlify.app/" class="btn c5">
             <span class="icon">🧪</span> <span>نموذج 6</span>
         </a>
-
-<a href="https://dashing-kangaroo-2d6359.netlify.app/" class="btn c5">
+        <a href="https://dashing-kangaroo-2d6359.netlify.app/" class="btn c5">
             <span class="icon">🧪</span> <span>نموذج 7</span>
         </a>
-
         <a href="https://forms.cloud.microsoft/r/SZptwEewNa?origin=lprLink" class="btn c6">
             <span class="icon">🌎</span> <span>نموذج 8</span>
         </a>
@@ -131,6 +137,15 @@
 </div>
 
 <script>
+    // وظيفة تحديث العداد تلقائياً عند فتح الصفحة
+    function updateCounter() {
+        const count = document.getElementById('modelList').getElementsByTagName('a').length;
+        document.getElementById('modelCount').innerText = count;
+    }
+
+    // تشغيل التحديث فور تحميل الصفحة
+    window.onload = updateCounter;
+
     function searchModels() {
         let input = document.getElementById('searchBox').value.toLowerCase();
         let list = document.getElementById('modelList');

@@ -7,67 +7,82 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
+            background-color: #eceff1;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start; /* للسماح بالتمرير إذا زادت النماذج */
             min-height: 100vh;
             margin: 0;
+            padding: 20px;
         }
         .container {
             background: white;
             padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             text-align: center;
-            width: 90%;
-            max-width: 400px;
+            width: 100%;
+            max-width: 500px;
         }
-        h1 { color: #2c3e50; font-size: 24px; margin-bottom: 20px; }
-        p { color: #7f8c8d; margin-bottom: 30px; }
+        h1 { color: #2c3e50; font-size: 26px; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
         
+        /* تصميم الزر الموحد */
         .btn {
             display: block;
-            padding: 15px;
-            margin-bottom: 15px;
+            padding: 18px;
+            margin-bottom: 12px;
             color: white;
             text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
-            transition: transform 0.2s, background 0.2s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #3498db, #2980b9); /* لون أزرق جذاب */
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
         }
-        
-        /* ألوان مختلفة لكل مادة */
-        .btn-1 { background-color: #3498db; } /* أزرق */
-        .btn-2 { background-color: #e67e22; } /* برتقالي */
-        .btn-3 { background-color: #2ecc71; } /* أخضر */
-        .btn-4 { background-color: #9b59b6; } /* بنفسجي */
 
         .btn:hover {
-            transform: translateY(-3px);
-            opacity: 0.9;
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+            filter: brightness(1.1);
+        }
+
+        /* تنسيق الأرقام التسلسلية */
+        .model-number {
+            background: rgba(255,255,255,0.2);
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-left: 10px;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>📚 بوابة الاختبارات</h1>
-    <p>الرجاء اختيار النموذج المطلوب:</p>
+    <h1>📝 قائمة النماذج المدرسية</h1>
+    <p style="color: #7f8c8d;">الرجاء اختيار النموذج المطلوب للبدء بالاختبار:</p>
 
-    <!-- يمكنك تعديل الروابط والأسماء بالأسفل -->
+    <!-- قائمة النماذج - انسخ السطر التالي وكرره بقدر ما تشاء -->
     
-    <a href="https://tangerine-dodol-ba483f.netlify.app" class="btn btn-1">📖 نموذج مادة اللغة العربية</a>
+    <a href="رابط_النموذج_1" class="btn"><span class="model-number">1</span> نموذج مادة اللغة العربية</a>
     
-    <a href="https://dashing-kangaroo-2d6359.netlify.app" class="btn btn-2">🧪 نموذج مادة العلوم</a>
+    <a href="رابط_النموذج_2" class="btn"><span class="model-number">2</span> نموذج مادة العلوم</a>
     
-    <a href="رابط_النموذج_الثالث_هنا" class="btn btn-3">📐 نموذج مادة الرياضيات</a>
+    <a href="رابط_النموذج_3" class="btn"><span class="model-number">3</span> نموذج مادة الرياضيات</a>
     
-    <a href="رابط_النموذج_الرابع_هنا" class="btn btn-4">💻 نموذج مادة الحاسب</a>
+    <a href="رابط_النموذج_4" class="btn"><span class="model-number">4</span> نموذج مادة الحاسب</a>
 
-    <div style="margin-top: 20px; font-size: 12px; color: #bdc3c7;">
-        مع تمنياتنا لكم بالتوفيق
+    <a href="رابط_النموذج_5" class="btn"><span class="model-number">5</span> نموذج مادة التربية الإسلامية</a>
+
+    <a href="رابط_النموذج_6" class="btn"><span class="model-number">6</span> نموذج مادة الاجتماعيات</a>
+
+    <a href="رابط_النموذج_7" class="btn"><span class="model-number">6</span> التناظر اللفظي</a>
+
+    <!-- نهاية القائمة -->
+
+    <div style="margin-top: 30px; font-size: 14px; color: #95a5a6; font-style: italic;">
+        💡 ملاحظة: تأكد من اختيار النموذج الصحيح قبل البدء.
     </div>
 </div>
 

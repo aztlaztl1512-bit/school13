@@ -33,17 +33,18 @@
         h1 { color: #2d3748; font-size: 28px; margin: 10px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.05); }
         .teacher-name { color: #4a5568; font-size: 18px; margin-bottom: 25px; border-bottom: 2px dashed #cbd5e0; padding-bottom: 15px; }
         
-        /* تصميم أيقونة عدد النماذج */
+        /* تصميم عداد النماذج بلمسة عصرية */
         .model-counter {
-            background: #edf2f7;
+            background: #ebf4ff;
             display: inline-block;
-            padding: 5px 15px;
+            padding: 8px 20px;
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: bold;
-            color: #4a5568;
-            margin-bottom: 15px;
-            border: 1px solid #e2e8f0;
+            color: #2b6cb0;
+            margin-bottom: 20px;
+            border: 1px solid #bee3f8;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
         #searchBox {
@@ -96,7 +97,7 @@
 <div class="container">
     <div class="school-name">🏰 ثانوية الأمير عبدالمجيد</div>
     <h1>✨ بوابة الاختبارات الرقمية ✨</h1>
-    <div class="teacher-name">إعداد الأستاذ: <b>عبدالعزيز الفيفي</b> 👨‍🏫</div>
+    <div class="teacher-name">إعداد الأستاذ: <b style="color: #2b6cb0;">عبدالعزيز الفيفي</b> 👨‍🏫</div>
 
     <div class="model-counter">
         📊 عدد النماذج المتاحة الآن: <span id="modelCount">0</span>
@@ -137,13 +138,12 @@
 </div>
 
 <script>
-    // وظيفة تحديث العداد تلقائياً عند فتح الصفحة
+    // تحديث العداد تلقائياً بكل ذكاء
     function updateCounter() {
         const count = document.getElementById('modelList').getElementsByTagName('a').length;
         document.getElementById('modelCount').innerText = count;
     }
 
-    // تشغيل التحديث فور تحميل الصفحة
     window.onload = updateCounter;
 
     function searchModels() {

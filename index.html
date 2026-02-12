@@ -1,224 +1,157 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة الاختبارات - أ. عبدالعزيز الفيفي</title>
+    <title>اختبار المفردة الشاذة والارتباط - نموذج 5</title>
     <style>
-        :root {
-            --primary: #5a67d8;
-            --bg-gradient: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%); /* ألوان باستيل مريحة */
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg-gradient);
-            background-attachment: fixed;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-        }
-        .container {
-            background: rgba(255, 255, 255, 0.9); /* شفافية بسيطة لإظهار الخلفية */
-            padding: 30px 20px;
-            border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            width: 100%;
-            max-width: 600px;
-            text-align: center;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,255,255,0.5);
-            margin-top: 20px;
-        }
-        
-        .school-name { 
-            color: #e53e3e !important; 
-            font-weight: bold; 
-            font-size: 1.1rem; 
-            margin-bottom: 5px; 
-        }
-
-        h1 { color: #2d3748; font-size: 24px; margin: 10px 0 5px 0; }
-        
-        .section-name {
-            color: #e53e3e;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .teacher-name { 
-            color: #4a5568; 
-            font-size: 17px; 
-            margin-bottom: 20px; 
-            border-bottom: 2px dashed #cbd5e0; 
-            padding-bottom: 15px; 
-        }
-        
-        .model-counter {
-            background: white;
-            display: inline-block;
-            padding: 6px 15px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: #2b6cb0;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
-        #searchBox {
-            width: 85%;
-            padding: 12px;
-            margin-bottom: 25px;
-            border: 2px solid #a3bffa;
-            border-radius: 50px;
-            font-size: 16px;
-            text-align: center;
-            outline: none;
-            transition: 0.3s;
-        }
-        #searchBox:focus { border-color: #5a67d8; box-shadow: 0 0 10px rgba(90,103,216,0.1); }
-
-        .model-list { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); 
-            gap: 15px; 
-            max-height: 450px; 
-            overflow-y: auto; 
-            padding: 10px;
-        }
-
-        .btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 15px 10px;
-            text-decoration: none;
-            border-radius: 20px;
-            font-weight: 600;
-            color: #4a5568;
-            background: white;
-            border: 1px solid #edf2f7;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
-        .btn:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 8px 15px rgba(0,0,0,0.08); 
-            background: #f8faff;
-            border-color: #a3bffa;
-        }
-        .icon { font-size: 22px; margin-bottom: 8px; }
-
-        .c-box { border-bottom: 4px solid #a3bffa; }
-
-        footer { margin-top: 25px; font-size: 12px; color: #718096; }
-        .no-results { display: none; padding: 20px; color: #e53e3e; font-weight: bold; }
-        
-        .model-list::-webkit-scrollbar { width: 5px; }
-        .model-list::-webkit-scrollbar-thumb { background: #cbd5e0; border-radius: 10px; }
+        :root { --primary: #2c3e50; --secondary: #3498db; --success: #27ae60; --danger: #e74c3c; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; margin: 0; padding: 20px; color: #333; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 8px solid var(--secondary); }
+        .header { text-align: center; margin-bottom: 30px; }
+        .school-info { font-size: 1.3em; color: var(--secondary); font-weight: bold; }
+        .student-board { background: #e8f4fd; padding: 15px; border-radius: 12px; margin-bottom: 25px; border-right: 6px solid var(--secondary); display: flex; justify-content: space-between; align-items: center; }
+        .timer-display { font-weight: bold; font-size: 1.4em; color: var(--primary); background: white; padding: 5px 15px; border-radius: 8px; border: 2px solid var(--secondary); }
+        .timer-warning { color: var(--danger); border-color: var(--danger); animation: blink 0.8s infinite; }
+        @keyframes blink { 50% { opacity: 0.5; } }
+        .question-box h3 { background: #f9f9f9; padding: 20px; border-radius: 10px; border: 1px dashed #ccc; }
+        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; list-style: none; padding: 0; }
+        .options-grid li { padding: 15px; border: 2px solid #eee; border-radius: 12px; cursor: pointer; text-align: center; transition: 0.2s; font-weight: 500; }
+        .options-grid li:hover { border-color: var(--secondary); background: #f0f8ff; }
+        .options-grid li.selected { background: var(--secondary); color: white; }
+        .feedback { margin-top: 20px; padding: 20px; border-radius: 12px; display: none; line-height: 1.6; }
+        .btn { width: 100%; padding: 15px; border: none; border-radius: 10px; cursor: pointer; font-size: 18px; font-weight: bold; margin-top: 20px; }
+        .btn-start { background: var(--success); color: white; }
+        .btn-next { background: var(--primary); color: white; }
+        .footer-note { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; font-style: italic; }
     </style>
 </head>
 <body>
-
 <div class="container">
-    <div class="school-name">🏰 ثانوية الأمير عبدالمجيد</div>
-    <h1>✨ بوابة الاختبارات الرقمية ✨</h1>
-    <div class="section-name">📘 القدرات - القسم اللفظي</div>
-    <div class="teacher-name">إعداد الأستاذ: <b style="color: #2b6cb0;">عبدالعزيز الفيفي</b> 👨‍🏫</div>
-
-    <div class="model-counter">
-        📊 إجمالي النماذج: <span id="modelCount">0</span>
+    <div class="header">
+        <h1>اختبار المفردة الشاذة والارتباط (نموذج 5) 📝✨</h1>
+        <div class="school-info">ثانوية الأمير عبدالمجيد مع فيس تعبيري 🏫🎓</div>
+        <div style="margin-top: 10px; color: #555;">أ / عبدالعزيز الفيفي 👨‍🏫</div>
     </div>
-
-    <input type="text" id="searchBox" placeholder="🔍 ابحث برقم النموذج..." onkeyup="searchModels()">
-
-    <div class="model-list" id="modelList">
-        <a href="https://aztlaztl1512-bit.github.io/school9/" class="btn c-box">
-            <span class="icon">📖</span> <span>نموذج التناظر اللفظي 1</span>
-        </a>
-        <a href="https://tangerine-dodol-ba483f.netlify.app/ " class="btn c-box">
-            <span class="icon">🧪</span> <span>نموذج التناظر اللفظي 2</span>
-        </a>
-        <a href="https://aztlaztl1512-bit.github.io/school11/" class="btn c-box">
-            <span class="icon">📐</span> <span>نموذج التناظر اللفظي 3</span>
-        </a>
-        <a href="https://fanciful-cactus-895f5b.netlify.app/" class="btn c-box">
-            <span class="icon">💻</span> <span>نموذج التناظر اللفظي 4</span>
-        </a>
-        <a href="https://aztlaztl1512-bit.github.io/school17/" class="btn c-box">
-            <span class="icon">📖</span> <span>نموذج التناظر اللفظي 5</span>
-        </a>
-        <a href="https://aztlaztl1512-bit.github.io/school18/" class="btn c-box">
-            <span class="icon">🌎</span> <span>نموذج التناظر اللفظي 6</span>
-        </a>
-        <a href="https://aztlaztl1512-bit.github.io/school19/" class="btn c-box">
-            <span class="icon">🧪</span> <span>نموذج التناظر اللفظي7</span>
-        </a>
-<a href="https://dynamic-puppy-921890.netlify.app/" class="btn c-box">
-    <span class="icon">📝</span> <span>نموذج التناظر اللفظي 8</span>
-</a>
-        <a href="https://forms.cloud.microsoft/r/SZptwEewNa?origin=lprLink" class="btn c-box">
-            <span class="icon">🌎</span> <span>نموذج التناظر اللفظي 9</span>
-        </a>
-<a href="https://forms.office.com/r/s04A7b96Fs?origin=lprLink" class="btn c-box">
-    <span class="icon">📝</span> <span>نموذج التناظر اللفظي 10</span>
-</a>
-<a href="https://forms.cloud.microsoft/r/SZptwEewNa?origin=lprLink" class="btn c-box">
-    <span class="icon">💻</span> <span>نموذج التناظر اللفظي 11</span>
-</a>
-<a href="https://forms.cloud.microsoft/r/B2HdjC9Kfc?origin=lprLink" class="btn c-box">
-    <span class="icon">🌎</span> <span>نموذج التناظر اللفظي 12</span>
-</a>
-<a href="https://aztlaztl1512-bit.github.io/school21/" class="btn c-box">
-    <span class="icon">📝</span> <span>نموذج المفردة الشاذة والارتباط والاختلاف 13</span>
-</a>
-<a href="https://aztlaztl1512-bit.github.io/school15/" class="btn c-box">
-    <span class="icon">📝</span> <span>نموذج الفردة الشاذة والارتباط والاختلاف 14</span>
-</a>
-<a href="https://aztlaztl1512-bit.github.io/school16//" class="btn c-box">
-    <span class="icon">📝</span> <span>نموذج الفردة الشاذة والارتباط والاختلاف 15</span>
-</a>
-<a href="https://aztlaztl1512-bit.github.io/school12" class="btn c-box">
-    <span class="icon">📝</span> <span>نموذج المفردة الشاذة والارتباط والاختلاف 16</span>
-</a>
-
+    <div id="start-screen">
+        <p style="text-align: center;">الأسئلة مستخرجة بدقة من بنك الأسئلة المرفق. لديك 30 ثانية لكل سؤال:</p>
+        <input type="text" id="name-input" placeholder="اكتب اسم الطالب هنا..." style="width: 100%; padding: 15px; border-radius: 10px; border: 2px solid #ddd; margin-bottom: 20px;">
+        <button class="btn btn-start" onclick="initQuiz()">ابدأ النموذج الخامس 🚀</button>
     </div>
-
-    <div id="noResults" class="no-results">❌ عذراً.. لا يوجد نموذج بهذا الرقم</div>
-
-    <footer> 🚀 صنع بكل حب لدعم مسيرة أبنائنا الطلاب 🚀 </footer>
-<footer> الحقوق محفوظة  2026 </footer>
+    <div id="quiz-ui" style="display:none;">
+        <div class="student-board"><span id="student-tag"></span><div id="timer-text" class="timer-display">30 ث</div></div>
+        <div id="quiz-content"></div>
+        <button id="next-btn" class="btn btn-next" onclick="nextQuestion()" style="display:none;">السؤال التالي ⬅️</button>
+    </div>
+    <div id="results" style="display:none;">
+        <h2 style="text-align: center; color: var(--success);">اكتمل النموذج الخامس بنجاح! 🏁</h2>
+        <div id="score-box" style="text-align: center; font-size: 1.8em; margin: 20px 0; font-weight: bold;"></div>
+        <div id="summary-list"></div>
+        <div class="footer-note">مع تمنياتي لك بمزيد من التقدم والنجاح 🌟<br><strong>أ / عبدالعزيز الفيفي</strong></div>
+    </div>
 </div>
-
 <script>
-    function updateCounter() {
-        document.getElementById('modelCount').innerText = document.getElementById('modelList').getElementsByTagName('a').length;
-    }
-    window.onload = updateCounter;
-
-    function searchModels() {
-        let input = document.getElementById('searchBox').value.toLowerCase();
-        let items = document.getElementById('modelList').getElementsByTagName('a');
-        let noResults = document.getElementById('noResults');
-        let found = false;
-
-        for (let i = 0; i < items.length; i++) {
-            let text = items[i].textContent || items[i].innerText;
-            if (text.toLowerCase().indexOf(input) > -1) {
-                items[i].style.display = "flex";
-                found = true;
-            } else {
-                items[i].style.display = "none";
-            }
-        }
-        noResults.style.display = found ? "none" : "block";
-    }
+const quizData = [
+    { q: "المفردة الشاذة: حدد الكلمة التي لا تنتمي للمجموعة:", a: ["قماش", "حرير", "صوف", "قطن"], c: 0, r: "الحرير والصوف والقطن مواد خام طبيعية، أما القماش فهو المنتج النهائي المصنوع منها." },
+    { q: "ارتباط: ما الكلمة الأكثر صلة بكلمة (غابة):", a: ["سمك", "أشجار", "رمل", "ماء"], c: 1, r: "الأشجار هي المكون الأساسي والجوهري الذي يميز الغابة عن غيرها." },
+    { q: "اختلاف: أي من العناصر التالية يختلف في تصنيفه: (ذهب، فضة، حديد، ماء)؟", a: ["ذهب", "فضة", "حديد", "ماء"], c: 3, r: "الذهب والفضة والحديد عناصر معدنية صلبة، بينما الماء مركب سائل." },
+    { q: "المفردة الشاذة: حدد المفردة الشاذة فيما يلي:", a: ["الرياض", "بغداد", "المنامة", "القاهرة"], c: 3, r: "الرياض وبغداد والمنامة عواصم تقع في قارة آسيا، أما القاهرة فتقع في قارة أفريقيا." },
+    { q: "ارتباط: ما الكلمة المرتبطة بكلمة (مستشفى):", a: ["مهندس", "نجار", "طبيب", "محام"], c: 2, r: "الطبيب هو الشخص المرتبط مهنياً وبشكل أساسي بالعمل داخل المستشفى." },
+    { q: "المفردة الشاذة: حدد الكلمة المختلفة:", a: ["برتقال", "ليمون", "يوسفي", "مانجو"], c: 3, r: "البرتقال والليمون واليوسفي من فصيلة الحمضيات، أما المانجو فمن فصيلة أخرى." },
+    { q: "ارتباط: ما الكلمة المرتبطة بكلمة (بحر):", a: ["لؤلؤ", "خشب", "رمل", "جبل"], c: 0, r: "اللؤلؤ يرتبط بالبحر لأنه يستخرج من أعماقه." },
+    { q: "المفردة الشاذة: حدد المفردة الشاذة:", a: ["سيارة", "حافلة", "شاحنة", "دراجة"], c: 3, r: "السيارة والحافلة والشاحنة تعمل بمحركات، بينما الدراجة تعمل بجهد بشري." },
+    { q: "اختلاف: أي من الفصول يختلف في تصنيفه: (شتاء، صيف، خريف، مطر)؟", a: ["شتاء", "صيف", "خريف", "مطر"], c: 3, r: "الشتاء والصيف والخريف فصول مناخية، أما المطر فهو ظاهرة جوية." },
+    { q: "المفردة الشاذة: حدد الكلمة الشاذة:", a: ["حديد", "نحاس", "ألمنيوم", "خشب"], c: 3, r: "الحديد والنحاس والألمنيوم معادن، بينما الخشب مادة نباتية." },
+    { q: "ارتباط: كلمة (خلية) مرتبطة بـ:", a: ["نمل", "نحل", "طير", "أفعى"], c: 1, r: "الخلية هي المسكن الخاص بالنحل." },
+    { q: "المفردة الشاذة: حدد المفردة المختلفة:", a: ["ساعة", "دقيقة", "ثانية", "زمن"], c: 3, r: "الساعة والدقيقة والثانية وحدات لقياس الزمن، أما الزمن فهو المفهوم العام." },
+    { q: "اختلاف: أي مما يلي يختلف في تصنيفه: (عين، أذن، أنف، يد)؟", a: ["عين", "أذن", "أنف", "يد"], c: 3, r: "العين والأذن والأنف أعضاء حسية تقع في الرأس، بينما اليد طرف جسدي." },
+    { q: "ارتباط: كلمة (مدرج) مرتبطة بـ:", a: ["سفينة", "سيارة", "طائرة", "قطار"], c: 2, r: "المدرج هو المكان المخصص لإقلاع وهبوط الطائرات." },
+    { q: "المفردة الشاذة: حدد المفردة الشاذة:", a: ["سوريا", "لبنان", "الأردن", "مصر"], c: 3, r: "سوريا ولبنان والأردن من دول بلاد الشام، أما مصر فتقع في أفريقيا." },
+    { q: "المفردة الشاذة: حدد الكلمة المختلفة:", a: ["سيف", "خنجر", "رمح", "درع"], c: 3, r: "السيف والخنجر والرمح أدوات هجومية، أما الدرع فهو أداة دفاعية." },
+    { q: "ارتباط: كلمة (سراب) مرتبطة بـ:", a: ["غابة", "بحر", "صحراء", "نهر"], c: 2, r: "السراب ظاهرة بصرية ترتبط بالبيئة الصحراوية والحرارة العالية." },
+    { q: "اختلاف: أي من العلوم يختلف عن البقية: (جبر، حساب، هندسة، كيمياء)؟", a: ["جبر", "حساب", "هندسة", "كيمياء"], c: 3, r: "الجبر والحساب والهندسة فروع للرياضيات، أما الكيمياء فعلم منفصل." },
+    { q: "المفردة الشاذة: حدد المفردة الشاذة:", a: ["فرح", "سرور", "بهجة", "شجاعة"], c: 3, r: "الفرح والسرور والبهجة مترادفات للسعادة، أما الشجاعة فهي صفة سلوكية." },
+    { q: "ارتباط: كلمة (قلم) مرتبطة بـ:", a: ["قراءة", "رسم", "كتابة", "تلوين"], c: 2, r: "الوظيفة الأساسية والتقليدية للقلم هي الكتابة." },
+    { q: "المفردة الشاذة: حدد الكلمة المختلفة:", a: ["عمر", "عثمان", "أبو بكر", "معاوية"], c: 3, r: "عمر وعثمان وأبو بكر من الخلفاء الراشدين، أما معاوية فهو مؤسس الدولة الأموية." },
+    { q: "اختلاف: أي مما يلي يختلف في علاقته: (محراب، منبر، مئذنة، كرسي)؟", a: ["محراب", "منبر", "مئذنة", "كرسي"], c: 3, r: "المحراب والمنبر والمئذنة أجزاء معمارية في المسجد، أما الكرسي فأثاث." },
+    { q: "المفردة الشاذة: حدد المفردة الشاذة:", a: ["صلاة", "صيام", "زكاة", "صدقة"], c: 3, r: "الصلاة والصيام والزكاة فرائض وأركان، أما الصدقة فهي تطوع." },
+    { q: "ارتباط: كلمة (رأس) مرتبطة بـ:", a: ["يد", "وجه", "عقل", "قلب"], c: 2, r: "العقل مكانه ومركزه داخل الرأس، وهو الارتباط الوظيفي الأقوى." },
+    { q: "المفردة الشاذة: حدد الكلمة المختلفة:", a: ["سمع", "بصر", "شم", "وجه"], c: 3, r: "السمع والبصر والشم من الحواس، أما الوجه فهو العضو الذي يحملها." }
+];
+let currentPos = 0, score = 0, stdName = "", records = [], timerId = null, timeLeft = 30;
+function initQuiz() {
+    stdName = document.getElementById('name-input').value.trim();
+    if(!stdName) return alert("لطفاً، اكتب اسم الطالب أولاً!");
+    document.getElementById('start-screen').style.display = "none";
+    document.getElementById('quiz-ui').style.display = "block";
+    document.getElementById('student-tag').innerHTML = `👤 الطالب: <strong>${stdName}</strong>`;
+    renderQuestion();
+}
+function runTimer() {
+    timeLeft = 30;
+    const timerBox = document.getElementById('timer-text');
+    timerBox.innerText = `${timeLeft} ث`;
+    timerBox.classList.remove('timer-warning');
+    clearInterval(timerId);
+    timerId = setInterval(() => {
+        timeLeft--;
+        timerBox.innerText = `${timeLeft} ث`;
+        if(timeLeft <= 5) timerBox.classList.add('timer-warning');
+        if(timeLeft <= 0) { clearInterval(timerId); handleAutoSkip(); }
+    }, 1000);
+}
+function renderQuestion() {
+    const data = quizData[currentPos];
+    document.getElementById('quiz-content').innerHTML = `
+        <div style="color:#888; font-weight:bold; margin-bottom:10px;">السؤال ${currentPos + 1} من ${quizData.length}</div>
+        <div class="question-box"><h3>${data.q}</h3></div>
+        <ul class="options-grid" id="opts">
+            ${data.a.map((opt, i) => `<li onclick="onSelect(this, ${i})">${opt}</li>`).join('')}
+        </ul>
+        <div id="fb" class="feedback"></div>
+    `;
+    document.getElementById('next-btn').style.display = "none";
+    runTimer();
+}
+function onSelect(el, idx) {
+    if(document.getElementById('next-btn').style.display === "block") return;
+    clearInterval(timerId);
+    const data = quizData[currentPos];
+    const isCorrect = (idx === data.c);
+    if(isCorrect) score++;
+    records.push({q: data.q, user: data.a[idx], correct: data.a[data.c], isCorrect, r: data.r});
+    el.classList.add('selected');
+    const fb = document.getElementById('fb');
+    fb.style.display = "block";
+    fb.style.background = isCorrect ? "#d4edda" : "#f8d7da";
+    fb.innerHTML = `<strong>${isCorrect ? 'رائع! إجابة صحيحة وتبرير دقيق ✅' : 'إجابة غير صحيحة.. لاحظ التبرير ❌'}</strong><br>${data.r}`;
+    document.getElementById('next-btn').style.display = "block";
+}
+function handleAutoSkip() {
+    if(document.getElementById('next-btn').style.display === "block") return;
+    records.push({q: quizData[currentPos].q, user: "انتهى الوقت", correct: quizData[currentPos].a[quizData[currentPos].c], isCorrect: false, r: "لم يتم اختيار إجابة في الوقت المحدد."});
+    nextQuestion();
+}
+function nextQuestion() {
+    currentPos++;
+    if(currentPos < quizData.length) renderQuestion();
+    else finalize();
+}
+function finalize() {
+    document.getElementById('quiz-ui').style.display = "none";
+    document.getElementById('results').style.display = "block";
+    document.getElementById('score-box').innerText = `الدرجة النهائية: ${score} من ${quizData.length}`;
+    let html = "<h4>مراجعة الإجابات والتبرير العلمي (النموذج 5):</h4>";
+    records.forEach((rec, i) => {
+        html += `<div style="padding:15px; border-bottom:1px solid #eee; margin-bottom:10px; border-radius:10px; background:#fafafa;">
+            <strong>س${i+1}. ${rec.q}</strong><br>
+            إجابتك: <span style="color:${rec.isCorrect?'#27ae60':'#e74c3c'}">${rec.user}</span> | 
+            الصحيحة: <span style="color:#27ae60">${rec.correct}</span><br>
+            <small style="color:#666;">💡 التبرير: ${rec.r}</small>
+        </div>`;
+    });
+    document.getElementById('summary-list').innerHTML = html;
+}
 </script>
-
 </body>
 </html>

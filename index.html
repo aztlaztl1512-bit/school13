@@ -3,88 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة الاختبارات المدرسية</title>
+    <title>بوابة الاختبارات - أ. عبدالعزيز الفيفي</title>
     <style>
+        :root {
+            --primary: #4a90e2;
+            --bg: #f8faff;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #eceff1;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* للسماح بالتمرير إذا زادت النماذج */
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
             margin: 0;
             padding: 20px;
+            display: flex;
+            justify-content: center;
         }
         .container {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             width: 100%;
             max-width: 500px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
         }
-        h1 { color: #2c3e50; font-size: 26px; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .school-name { color: #5a67d8; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; }
+        h1 { color: #2d3748; font-size: 28px; margin: 10px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.05); }
+        .teacher-name { color: #4a5568; font-size: 18px; margin-bottom: 25px; border-bottom: 2px dashed #cbd5e0; padding-bottom: 15px; }
         
-        /* تصميم الزر الموحد */
+        /* مربع البحث */
+        #searchBox {
+            width: 90%;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: 2px solid #e2e8f0;
+            border-radius: 50px;
+            font-size: 16px;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+        #searchBox:focus { border-color: #667eea; box-shadow: 0 0 10px rgba(102,126,234,0.2); }
+
+        /* الأزرار */
+        .model-list { display: flex; flex-direction: column; gap: 15px; }
         .btn {
-            display: block;
-            padding: 18px;
-            margin-bottom: 12px;
-            color: white;
+            display: flex;
+            align-items: center;
+            padding: 18px 25px;
             text-decoration: none;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            background: linear-gradient(135deg, #3498db, #2980b9); /* لون أزرق جذاب */
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-        }
-
-        .btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
-            filter: brightness(1.1);
-        }
-
-        /* تنسيق الأرقام التسلسلية */
-        .model-number {
-            background: rgba(255,255,255,0.2);
-            padding: 2px 10px;
             border-radius: 20px;
-            margin-left: 10px;
-            font-size: 14px;
+            font-weight: 600;
+            color: #4a5568;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: white;
+            border: 1px solid #edf2f7;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
+        .btn:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .icon { font-size: 24px; margin-left: 15px; background: #f7fafc; padding: 10px; border-radius: 15px; }
+
+        /* ألوان باستيل مبهرة */
+        .c1 { border-right: 8px solid #feb2b2; } .c1:hover { background: #fff5f5; }
+        .c2 { border-right: 8px solid #90cdf4; } .c2:hover { background: #ebf8ff; }
+        .c3 { border-right: 8px solid #9ae6b4; } .c3:hover { background: #f0fff4; }
+        .c4 { border-right: 8px solid #faf089; } .c4:hover { background: #fffff0; }
+        .c5 { border-right: 8px solid #d6bcfa; } .c5:hover { background: #faf5ff; }
+        .c6 { border-right: 8px solid #81e6d9; } .c6:hover { background: #e6fffa; }
+
+        footer { margin-top: 30px; font-size: 13px; color: #a0aec0; letter-spacing: 1px; }
+        .no-results { display: none; padding: 20px; color: #e53e3e; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>📝 قائمة النماذج المدرسية</h1>
-    <p style="color: #7f8c8d;">الرجاء اختيار النموذج المطلوب للبدء بالاختبار:</p>
+    <div class="school-name">🏰 ثانوية الأمير عبدالحميد</div>
+    <h1>✨ بوابة الاختبارات الرقمية ✨</h1>
+    <div class="teacher-name">إعداد الأستاذ: <b>عبدالعزيز الفيفي</b> 👨‍🏫</div>
 
-    <!-- قائمة النماذج - انسخ السطر التالي وكرره بقدر ما تشاء -->
-    
-    <a href="رابط_النموذج_1" class="btn"><span class="model-number">1</span> نموذج مادة اللغة العربية</a>
-    
-    <a href="رابط_النموذج_2" class="btn"><span class="model-number">2</span> نموذج مادة العلوم</a>
-    
-    <a href="رابط_النموذج_3" class="btn"><span class="model-number">3</span> نموذج مادة الرياضيات</a>
-    
-    <a href="رابط_النموذج_4" class="btn"><span class="model-number">4</span> نموذج مادة الحاسب</a>
+    <input type="text" id="searchBox" placeholder="🔍 ابحث عن مادتك أو رقم النموذج..." onkeyup="searchModels()">
 
-    <a href="رابط_النموذج_5" class="btn"><span class="model-number">5</span> نموذج مادة التربية الإسلامية</a>
+    <div class="model-list" id="modelList">
+        <!-- انسخ أي سطر وزد الأرقام للأبد -->
+        <a href="رابط_النموذج_1" class="btn c1">
+            <span class="icon">📖</span> <span>نموذج 1: نموذج 1</span>
+        </a>
 
-    <a href="رابط_النموذج_6" class="btn"><span class="model-number">6</span> نموذج مادة الاجتماعيات</a>
+        <a href="رابط_النموذج_2" class="btn c2">
+            <span class="icon">🧪</span> <span>نموذج 2: نموذج 2</span>
+        </a>
+<a href="رابط_النموذج_3" class="btn c3">
+            <span class="icon">📐</span> <span>نموذج 3: نموذج 3</span>
+        </a>
 
-    <a href="رابط_النموذج_7" class="btn"><span class="model-number">6</span> التناظر اللفظي</a>
+        <a href="رابط_النموذج_4" class="btn c4">
+            <span class="icon">💻</span> <span>نموذج 4: نموذج 4</span>
+        </a>
 
-    <!-- نهاية القائمة -->
+        <a href="رابط_النموذج_5" class="btn c5">
+            <span class="icon">🕋</span> <span>نموذج 5: نموذج 5</span>
+        </a>
 
-    <div style="margin-top: 30px; font-size: 14px; color: #95a5a6; font-style: italic;">
-        💡 ملاحظة: تأكد من اختيار النموذج الصحيح قبل البدء.
+<a href="رابط_النموذج_5" class="btn c5">
+            <span class="icon">🕋</span> <span>نموذج 5: نموذج 6</span>
+        </a>
+
+        <a href="رابط_النموذج_6" class="btn c6">
+            <span class="icon">🌎</span> <span>نموذج 6: نموذج 6</span>
+        </a>
     </div>
+
+    <div id="noResults" class="no-results">❌ عذراً.. لا يوجد نموذج بهذا الاسم</div>
+
+    <footer>صنع بكل حب لدعم مسيرة أبنائنا الطلاب 🚀</footer>
 </div>
+
+<script>
+    function searchModels() {
+        let input = document.getElementById('searchBox').value.toLowerCase();
+        let list = document.getElementById('modelList');
+        let items = list.getElementsByTagName('a');
+        let noResults = document.getElementById('noResults');
+        let found = false;
+
+        for (let i = 0; i < items.length; i++) {
+            let text = items[i].textContent || items[i].innerText;
+            if (text.toLowerCase().indexOf(input) > -1) {
+                items[i].style.display = "flex";
+                found = true;
+            } else {
+                items[i].style.display = "none";
+            }
+        }
+        noResults.style.display = found ? "none" : "block";
+    }
+</script>
 
 </body>
 </html>

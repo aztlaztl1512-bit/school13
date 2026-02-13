@@ -2,12 +2,11 @@
 <html dir="rtl" lang="ar">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة الاختبارات - أ. عبدالعزيز الفيفي</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>بوابة الاختبارات - أ. عبدالعزيز الفيفي</title>
     <style>
         :root {
             --primary: #5a67d8;
-            --bg-gradient: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%); /* ألوان باستيل مريحة */
+            --bg-gradient: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,78 +14,59 @@
             background-attachment: fixed;
             min-height: 100vh;
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             display: flex;
             justify-content: center;
             align-items: flex-start;
         }
         .container {
-            background: rgba(255, 255, 255, 0.9); /* شفافية بسيطة لإظهار الخلفية */
+            background: rgba(255, 255, 255, 0.9);
             padding: 30px 20px;
             border-radius: 30px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            width: 100%;
-            max-width: 600px;
+            width: 95%;
+            max-width: 1000px;
             text-align: center;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255,255,255,0.5);
             margin-top: 20px;
         }
         
-        .school-name { 
-            color: #e53e3e !important; 
-            font-weight: bold; 
-            font-size: 1.1rem; 
-            margin-bottom: 5px; 
-        }
-
-        h1 { color: #2d3748; font-size: 24px; margin: 10px 0 5px 0; }
-        
-        .section-name {
-            color: #e53e3e;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .teacher-name { 
-            color: #4a5568; 
-            font-size: 17px; 
-            margin-bottom: 20px; 
-            border-bottom: 2px dashed #cbd5e0; 
-            padding-bottom: 15px; 
-        }
+        .school-name { color: #e53e3e !important; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; }
+        h1 { color: #2d3748; font-size: clamp(20px, 5vw, 26px); margin: 10px 0 5px 0; }
+        .section-name { color: #e53e3e; font-size: 1.1rem; font-weight: 600; margin-bottom: 5px; }
+        .teacher-name { color: #4a5568; font-size: 16px; margin-bottom: 20px; border-bottom: 2px dashed #cbd5e0; padding-bottom: 15px; }
         
         .model-counter {
             background: white;
             display: inline-block;
-            padding: 6px 15px;
+            padding: 8px 20px;
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: bold;
             color: #2b6cb0;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         #searchBox {
             width: 85%;
+            max-width: 400px;
             padding: 12px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             border: 2px solid #a3bffa;
             border-radius: 50px;
             font-size: 16px;
             text-align: center;
             outline: none;
-            transition: 0.3s;
         }
-        #searchBox:focus { border-color: #5a67d8; box-shadow: 0 0 10px rgba(90,103,216,0.1); }
 
         .model-list { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); 
+            /* هذه الخاصية تجعل النماذج تقفز للسطر التالي تلقائياً حسب حجم الشاشة */
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
             gap: 15px; 
-            max-height: 450px; 
+            max-height: 60vh; 
             overflow-y: auto; 
             padding: 10px;
         }
@@ -104,23 +84,18 @@
             background: white;
             border: 1px solid #edf2f7;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
-        .btn:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 8px 15px rgba(0,0,0,0.08); 
-            background: #f8faff;
-            border-color: #a3bffa;
-        }
-        .icon { font-size: 22px; margin-bottom: 8px; }
-
+        .btn:hover { transform: translateY(-5px); background: #f8faff; border-color: #a3bffa; }
+        .icon { font-size: 24px; margin-bottom: 8px; }
         .c-box { border-bottom: 4px solid #a3bffa; }
 
-        footer { margin-top: 25px; font-size: 12px; color: #718096; }
-        .no-results { display: none; padding: 20px; color: #e53e3e; font-weight: bold; }
+        footer { margin-top: 30px; font-size: 12px; color: #718096; }
         
-        .model-list::-webkit-scrollbar { width: 5px; }
-        .model-list::-webkit-scrollbar-thumb { background: #cbd5e0; border-radius: 10px; }
+        /* تحسينات خاصة للشاشات الصغيرة جداً */
+        @media (max-width: 400px) {
+            .model-list { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+            .container { padding: 20px 10px; }
+        }
     </style>
 </head>
 <body>
@@ -132,13 +107,14 @@
     <div class="teacher-name">إعداد الأستاذ: <b style="color: #2b6cb0;">عبدالعزيز الفيفي</b> 👨‍🏫</div>
 
     <div class="model-counter">
-        📊 إجمالي النماذج: <span id="modelCount">0</span>
+        📊 إجمالي النماذج المتاحة: <span id="modelCount">0</span>
     </div>
 
     <input type="text" id="searchBox" placeholder="🔍 ابحث برقم النموذج..." onkeyup="searchModels()">
 
     <div class="model-list" id="modelList">
-        <a href="https://aztlaztl1512-bit.github.io/school9/" class="btn c-box">
+        <a href="#" class="btn c-box">
+           <a href="https://aztlaztl1512-bit.github.io/school9/" class="btn c-box">
             <span class="icon">📖</span> <span>نموذج التناظر اللفظي 1</span>
         </a>
         <a href="https://tangerine-dodol-ba483f.netlify.app/ " class="btn c-box">
@@ -209,10 +185,9 @@
 </a>
     </div>
 
-    <div id="noResults" class="no-results">❌ عذراً.. لا يوجد نموذج بهذا الرقم</div>
+    <div id="noResults" style="display:none; padding: 20px; color: #e53e3e; font-weight: bold;">❌ لا يوجد نموذج بهذا الرقم</div>
 
-    <footer> 🚀 صنع بكل حب لدعم مسيرة أبنائنا الطلاب 🚀 </footer>
-<footer> الحقوق محفوظة  2026 </footer>
+    <footer>صنع بكل حب لدعم مسيرة أبنائنا الطلاب 🚀</footer>
 </div>
 
 <script>
@@ -226,7 +201,6 @@
         let items = document.getElementById('modelList').getElementsByTagName('a');
         let noResults = document.getElementById('noResults');
         let found = false;
-
         for (let i = 0; i < items.length; i++) {
             let text = items[i].textContent || items[i].innerText;
             if (text.toLowerCase().indexOf(input) > -1) {

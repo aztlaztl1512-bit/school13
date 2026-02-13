@@ -6,9 +6,10 @@
     <title>بوابة الاختبارات - أ. عبدالعزيز الفيفي</title>
     <style>
         :root {
-            --primary: #5a67d8;
-            --border-color: #cbd5e0; /* لون الإطار الواضح */
-            --accent-red: #e53e3e;
+            --primary-blue: #2b6cb0;
+            --accent-red: #e53e3e; /* اللون الأحمر المطلوب للمدرسة واللقب */
+            --border-gray: #cbd5e0;
+            --bg-soft: #f0f4f8;
         }
 
         body {
@@ -18,7 +19,7 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            background-color: #f0f4f8;
+            background-color: var(--bg-soft);
             background-image: 
                 radial-gradient(at 0% 0%, rgba(224, 234, 252, 0.8) 0, transparent 50%), 
                 radial-gradient(at 100% 0%, rgba(247, 232, 240, 0.8) 0, transparent 50%);
@@ -26,7 +27,7 @@
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             width: 100%;
@@ -36,32 +37,44 @@
             box-sizing: border-box;
         }
 
-        .school-tag {
-            background: var(--accent-red);
-            color: white;
-            padding: 6px 20px;
-            border-radius: 8px; /* زوايا أقل حدة لإطار واضح */
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 10px;
-            border: 2px solid rgba(0,0,0,0.1);
+        /* تعديل اسم المدرسة: لون أحمر فقط بدون مربع */
+        .school-name-text {
+            color: var(--accent-red);
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            display: block;
         }
 
         h1 { color: #2d3748; font-size: clamp(22px, 5vw, 30px); margin: 10px 0; font-weight: 800; }
-        .section-title { color: var(--accent-red); font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; }
-        .teacher-name { color: #2b6cb0; font-size: 1.1rem; margin-bottom: 30px; font-weight: bold; }
+        
+        /* القسم اللفظي باللون الأحمر أيضاً للتناسق */
+        .section-title { 
+            color: var(--accent-red); 
+            font-size: 1.2rem; 
+            font-weight: 700; 
+            margin-bottom: 5px; 
+        }
+
+        .teacher-name { 
+            color: var(--primary-blue); 
+            font-size: 1.1rem; 
+            margin-bottom: 30px; 
+            font-weight: bold; 
+        }
 
         #searchBox {
             width: 90%;
             max-width: 450px;
             padding: 15px;
             margin-bottom: 40px;
-            border: 2px solid var(--primary); /* إطار واضح لمربع البحث */
+            border: 2px solid var(--primary-blue);
             border-radius: 12px;
             font-size: 16px;
             text-align: center;
             outline: none;
             background: white;
+            box-shadow: 4px 4px 0px rgba(43, 108, 176, 0.1);
         }
 
         .model-list { 
@@ -71,7 +84,7 @@
             padding: 10px 5%;
         }
 
-        /* تنسيق البطاقة بإطار واضح جداً */
+        /* البطاقة بإطار واضح ومحدد */
         .btn {
             background: white;
             padding: 25px 15px;
@@ -79,19 +92,18 @@
             border-radius: 15px;
             color: #2d3748;
             transition: all 0.3s ease;
-            /* إطار واضح ومحدد */
-            border: 2px solid var(--border-color); 
+            border: 2px solid var(--border-gray); 
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 15px;
-            box-shadow: 4px 4px 0px rgba(0,0,0,0.05); /* ظل صلب لتعزيز الوضوح */
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.05);
         }
 
         .btn:hover { 
             transform: translate(-2px, -2px);
-            border-color: var(--primary); /* يتغير لون الإطار عند المرور */
-            box-shadow: 6px 6px 0px var(--primary);
+            border-color: var(--primary-blue);
+            box-shadow: 6px 6px 0px var(--primary-blue);
             background: #f8faff;
         }
 
@@ -99,7 +111,7 @@
             width: 55px;
             height: 55px;
             background: #edf2f7;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--border-gray);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -112,32 +124,39 @@
         .footer-line {
             margin-top: 60px;
             padding: 30px;
-            border-top: 2px solid var(--border-color);
+            border-top: 2px solid var(--border-gray);
             display: flex;
             justify-content: space-between;
+            align-items: center;
             color: #4a5568;
             font-weight: 600;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         @media (max-width: 600px) {
             .model-list { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+            .footer-line { justify-content: center; text-align: center; }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="school-tag">ثانوية الأمير عبدالمجيد 🏰</div>
-    <h1>بوابة الاختبارات الرقمية</h1>
-    <div class="section-title">القدرات - القسم اللفظي 💯</div>
+    <span class="school-name-text">🏰 ثانوية الأمير عبدالمجيد</span>
+    
+    <h1>✨ بوابة الاختبارات الرقمية ✨</h1>
+    
+    <div class="section-title">🤝 القدرات - القسم اللفظي 💯</div>
+    
     <div class="teacher-name">إعداد الأستاذ: عبدالعزيز الفيفي 👨‍🏫</div>
 
-    <div style="background: white; padding: 10px 20px; border: 2px solid var(--primary); border-radius: 50px; display: inline-block; margin-bottom: 30px; font-weight: bold;">
+    <div style="background: white; padding: 10px 25px; border: 2px solid var(--primary-blue); border-radius: 50px; display: inline-block; margin-bottom: 30px; font-weight: bold; color: var(--primary-blue);">
         📊 إجمالي النماذج: <span id="modelCount">0</span>
     </div>
     
     <br>
-    <input type="text" id="searchBox" placeholder="🔍 ابحث هنا..." onkeyup="searchModels()">
+    <input type="text" id="searchBox" placeholder="🔍 ابحث عن رقم النموذج..." onkeyup="searchModels()">
 
     <div class="model-list" id="modelList">
         <a href="https://aztlaztl1512-bit.github.io/school9/" class="btn"><div class="icon-circle">📖</div><span>نموذج التناظر 1</span></a>
@@ -165,17 +184,12 @@
         <a href="https://aztlaztl1512-bit.github.io/school28/" class="btn"><div class="icon-circle">🏆</div><span>نموذج المفردة 23</span></a>
     </div>
 
-    <div style="border-top: 2px dashed #d1d5db; margin: 20px 0;"></div>
-
-<table style="width: 100%; font-family: sans-serif; font-size: 0.85em; direction: rtl; border: none; border-collapse: collapse;">
-  <tr>
-    <td style="text-align: right; width: 33%; color: #a9a9a9;">🚀 صنع بكل حب لدعم مسيرة أبنائنا الطلاب</td>
-    
-    <td style="text-align: center; width: 34%; color: #e57373;">أ / عبدالعزيز الفيفي 👨‍🏫</td>
-    
-    <td style="text-align: left; width: 33%; color: #a9a9a9;">الحقوق محفوظة 2026 📝</td>
-  </tr>
-</table>
+    <div class="footer-line">
+        <div>🚀 دعم مسيرة أبنائنا الطلاب</div>
+        <div style="color: var(--accent-red);">أ / عبدالعزيز الفيفي 👨‍🏫</div>
+        <div>2026 📝</div>
+    </div>
+</div>
 
 <script>
     function updateCounter() {
